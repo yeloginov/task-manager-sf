@@ -29,7 +29,7 @@ func TestStorage_NewTask(t *testing.T) {
 		wantErr bool
 	}{
 		{name: "Test 1", args: args{
-			Task{Title: "Выполнить тестирование", Content: "Разобраться с тестовыми данными для Unit test"}},
+			Task{Title: "Выполнить тестирование", Content: "Разобраться с тестовыми данными для Unit test", AuthorID: 1}},
 			want: 0, wantErr: false},
 	}
 	for _, tt := range tests {

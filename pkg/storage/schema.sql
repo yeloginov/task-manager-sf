@@ -13,6 +13,7 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL
 );
+INSERT INTO users (id, name) VALUES (0, 'noname');
 
 -- Метки задач
 CREATE TABLE labels (
