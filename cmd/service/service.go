@@ -21,9 +21,21 @@ const (
 )
 
 func main() {
+
+	// Подключение к БД (создание абстрактного объекта БД)
 	db, err := storage.New(fmt.Sprintf("postgres://%s:%s@%s:%s/%s", DBUser, DBPassword, DBHost, DBPort, DBName))
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(db)
+
+	// Инициация – создание таблиц
+	err = db.CreateTables("././pkg/storage/schema.sql")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Заполнение БД тестовыми данными
+	u1 := storage.User{Name: "Егор"}
+	u1.ID, _ = db.NewUser(u1)
+	fmt.Println(db.GetUser(u1.ID))
 }
