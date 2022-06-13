@@ -35,7 +35,16 @@ func main() {
 	}
 
 	// Заполнение БД тестовыми данными
+	// Пользователи
 	u1 := storage.User{Name: "Егор"}
 	u1.ID, _ = db.NewUser(u1)
 	fmt.Println(db.GetUser(u1.ID))
+	// Метки
+	l1 := storage.Label{Name: "Важная"}
+	l1.ID, _ = db.NewLabel(l1)
+	l1.ID, _ = db.NewLabel(l1) // контроль уникальности
+	l2 := storage.Label{Name: "Минорная"}
+	l2.ID, _ = db.NewLabel(l2)
+	fmt.Println(db.GetLabel(l1.ID))
+	fmt.Println(db.GetLabel(l2.ID))
 }

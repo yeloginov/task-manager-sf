@@ -17,7 +17,8 @@ CREATE TABLE users (
 -- Метки задач
 CREATE TABLE labels (
     id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL
+    name TEXT NOT NULL,
+    CONSTRAINT labels_name_unique UNIQUE (name)
 );
 
 -- Задачи

@@ -16,7 +16,7 @@ type User struct {
 	Name string `json:"name"`
 }
 
-// GetUser возвращает пользователя по ID
+// GetUser возвращает пользователя по id.
 func (s *Storage) GetUser(id int) (User, error) {
 	sql := `
 		SELECT id, name
